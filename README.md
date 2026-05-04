@@ -38,12 +38,7 @@ The system continuously checks the RTC time.
 * If the current time matches a scheduled message, it displays the message on the LCD and turns ON the green LED.
 * If no message is scheduled, it displays the current time and temperature, and turns ON the red LED.
 * The user can enter Admin Mode using a password through the keypad to modify time and enable/disable messages.
-
-## Project Structure
-
-* code/ → Source code files (.c, .h)
-* docs/ → Project documentation (PDF)
-  
+    
 ## Conclusion
 
 This project demonstrates the use of RTC, embedded C programming, and hardware interfacing to build a real-time automated display system with user interaction and environmental monitoring.
