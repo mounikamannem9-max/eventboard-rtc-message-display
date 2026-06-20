@@ -59,7 +59,7 @@ void Min_edit()
    CmdLCD(GOTO_LINE1_POS0);
    CharLCD(min/10+48);
    CharLCD(min%10+48);
-   key = Keyscan();^M
+   key = Keyscan();
    while(!colscan());
    if(key == 'A')
    {
@@ -76,7 +76,7 @@ void Min_edit()
                  break;
    }
  }
-}^M
+}
 /* SECOND EDIT FUNCTION
 --------------------------------------------------
 Allows user to modify RTC seconds
@@ -93,7 +93,7 @@ void Sec_edit()
    CmdLCD(GOTO_LINE1_POS0);
    CharLCD(sec/10+48);
    CharLCD(sec%10+48);
-   key = Keyscan();^M
+   key = Keyscan();
    while(!colscan());
    if(key == 'A')
    {
@@ -110,7 +110,7 @@ void Sec_edit()
                  break;
    }
  }
-}^M
+}
 /* DATE EDIT FUNCTION
 --------------------------------------------------
 Allows user to modify date (1-31)
@@ -144,7 +144,7 @@ void Date_edit()
                  break;
           }
  }
-}^M
+}
 /* DAY EDIT FUNCTION
 --------------------------------------------------
 Allows user to modify day of week (0-6)
@@ -176,7 +176,7 @@ void Day_edit()
                  break;
           }
         }
-}^M
+}
 /* MONTH EDIT FUNCTION
 --------------------------------------------------
 Allows user to modify month (1-12)
@@ -210,7 +210,7 @@ void Month_edit()
                  break;
            }
         }
-}^M
+}
 /* YEAR EDIT FUNCTION
 --------------------------------------------------
 Allows user to modify year
@@ -296,9 +296,9 @@ void Event_msg_info()
                  StrLCD("--EVENT SETT--");
                  CmdLCD(GOTO_LINE2_POS0);
                  StrLCD("ENTER MSGNO:");
-             msgno=ReadNum();  //Read message number
+                 msgno=ReadNum();  //Read message number
                  CmdLCD(GOTO_LINE2_POS0+13);
-             U32LCD(msgno);
+                 U32LCD(msgno);
                  delay_ms(500);
                  if(msgno>=1 && msgno<=10) //checking valid range
                  {
@@ -309,8 +309,8 @@ void Event_msg_info()
                                  StrLCD("1.ACTIVATE 3.EXIT");
                                  CmdLCD(GOTO_LINE2_POS0);
                                  StrLCD("2.DEACTIVATE");
-                                 key=Keyscan();^M
-                                   while(!colscan());
+                                 key=Keyscan();
+                                 while(!colscan());
                                  if(key=='1')
                                  {
                                             Activate_msg(msgno);
@@ -322,12 +322,12 @@ void Event_msg_info()
                                  else if(key=='3')
                                             return;
                          }
-                 }^M
-                 else^M
-                 {^M
-                    CmdLCD(0x01);^M
-                        StrLCD("invalid range");^M
-                        delay_s(1);^M
+                 }
+                 else
+                 {
+                        CmdLCD(0x01);
+                        StrLCD("invalid range");
+                        delay_s(1);
                  }
         }
 }
