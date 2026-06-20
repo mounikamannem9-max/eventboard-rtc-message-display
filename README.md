@@ -2,7 +2,7 @@
 
 ## Description
 
-EventBoard is an embedded system project using LPC2148 that displays scheduled messages on a 16x2 LCD based on real-time clock (RTC). The system allows secure admin access to configure time and select messages using a keypad with password protection. It also shows temperature using an LM35 sensor and indicates system status using LEDs
+EventBoard is an embedded system project using LPC2148 that displays scheduled messages on a 16x2 LCD based on real-time clock (RTC). The system allows secure admin access to configure time and select messages using a keypad. It also shows temperature using an LM35 sensor and indicates system status using LEDs
 
 ## Objective
 
