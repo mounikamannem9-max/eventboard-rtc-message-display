@@ -67,22 +67,18 @@ int main()
         int i=0;
         RTC_Init();         //intialization of RTC
         InitLCD();          //intialization of LCD
-      Initkpm();            //intialization of KPM
+        Initkpm();            //intialization of KPM
         InitADC();          //intialization of ADC^M
-
         IODIR0|=3<<LED1;   //cfg p0.1,p0.2 as gpio output
-
         //set intial RTC value
         SetRTCDateInfo(11,03,2026);
         SetRTCTimeInfo(10,44,0);
         SetRTCDay(MON);
-     while(1)
+        while(1)
         {
-                IOSET0=1<<LED2; //turn off LED2
-                  IOCLR0=1<<LED1;        //turn on LED1
-
-                  GetRTCTimeInfo(&hour,&min,&sec);  //get current RTC time
-
+                IOSET0=1<<LED2;        //turn off LED2
+                IOCLR0=1<<LED1;        //turn on LED1
+                GetRTCTimeInfo(&hour,&min,&sec);  //get current RTC time
                 for(i=0;i<TOTAL_MESSAGES;i++)
                 {
                     s32 countdown=60; //60 seconds of display time
@@ -90,13 +86,13 @@ int main()
                     if((hour==messageList[i].hour)&& (min==messageList[i].minute) &&
                                         (messageList[i].enabled==1) && sec==0)
                     {
-                                       strcpy(buf,"                ");
+                           strcpy(buf,"                ");
                            strcat(buf,messageList[i].text);
                            strcat(buf,"                ");
                            len=strlen(buf)-16;
-                                 CmdLCD(0x01); //clear LCD
-                                 //count down loop 
-                                  while(countdown>0)
+                            CmdLCD(0x01); //clear LCD
+                            //count down loop 
+                            while(countdown>0)
                             {
                               for(k=0;k<len;k++)
                               {
@@ -111,21 +107,21 @@ int main()
                                    }
                                    sec=SEC;//upadate countdown for every second
                                    if(sec != prev_sec)
-                           {
+                                  {
                                       prev_sec = sec;
                                                 mm = (countdown%3600)/60;
                                       ss = countdown%60;
                                         if(countdown>0)
                                                 countdown--;
-                            }
+                                   }
                                     CmdLCD(GOTO_LINE2_POS0);
-                                  StrLCD("TIME LEFT:");
-                                 //display countdown timer                                                                   
-                                       CharLCD(mm/10+48);
-                                 CharLCD(mm%10+48);
-                                 CharLCD(':');
-                                 CharLCD(ss/10+48);
-                                 CharLCD(ss%10+48);
+                                    StrLCD("TIME LEFT:");
+                                    //display countdown timer                                                                   
+                                     CharLCD(mm/10+48);
+                                     CharLCD(mm%10+48);
+                                     CharLCD(':');
+                                     CharLCD(ss/10+48);
+                                     CharLCD(ss%10+48);
                                }
                         }
                    }
@@ -138,17 +134,17 @@ int main()
                            prev_sec_display=sec;
                            GetRTCDateInfo(&date,&month,&year);  //get current RTC date
                            GetRTCDay(&dow);                         //get current day
-                     //display time,date,day
+                           //display time,date,day
                            DisplayRTCTime(hour,min,sec);
                            DisplayRTCDay(dow);
                            DisplayRTCDate(date,month,year);
-                     //display temperature using ADC
+                           //display temperature using ADC
                            CmdLCD(GOTO_LINE2_POS0+10);
                            StrLCD("T:");
                            Read_ADC(CH1,&eAR,&Adcval);
                            U32LCD(eAR*100);
-                     CharLCD(0xDF);  //degree symbol
-                     CharLCD('C');
+                           CharLCD(0xDF);  //degree symbol
+                           CharLCD('C');
                          }
           }
           if(STATUSBIT(IOPIN0,SW)==0)
