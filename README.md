@@ -11,7 +11,6 @@ To design a real-time automated message display system that shows predefined mes
 ## Features
 
 * RTC-based automatic message display
-* Admin mode with password protection
 * Keypad interface for user input
 * Temperature display using LM35 sensor
 * LED indication for active and idle modes
